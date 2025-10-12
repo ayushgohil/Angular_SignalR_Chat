@@ -1,0 +1,103 @@
+###########################################
+# 🌐 ASP.NET Core / .NET
+###########################################
+## Ignore build outputs
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## Logs
+*.log
+
+## .NET dependency manager
+project.lock.json
+project.fragment.lock.json
+
+## Visual Studio
+.vs/
+.vscode/
+*.dbmdl
+*.jfm
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+## Publish directories
+publish/
+wwwroot/lib/
+wwwroot/dist/
+
+## Environment files
+appsettings.*.json
+secrets.json
+*.env
+
+## Entity Framework
+Migrations/
+
+## Azure publish settings
+*.PublishSettings
+
+## Rider
+.idea/
+*.sln.iml
+
+###########################################
+# ⚙️ Angular / Frontend
+###########################################
+## Dependency directories
+node_modules/
+jspm_packages/
+
+## Build outputs
+dist/
+tmp/
+out-tsc/
+build/
+
+## Angular specific cache
+.angular/
+.angular/cache/
+
+## TypeScript
+*.tsbuildinfo
+
+## IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+## Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+## Environment files
+src/environments/environment.*.ts
+
+## Misc
+.DS_Store
+Thumbs.db
+
+###########################################
+# 🔒 General System Files
+###########################################
+# Windows
+ehthumbs.db
+desktop.ini
+
+# macOS
+*.DS_Store
+.AppleDouble
+.LSOverride
