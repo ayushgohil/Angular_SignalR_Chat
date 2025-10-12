@@ -1,6 +1,8 @@
-﻿namespace Chat_API.Authentication
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Chat_API.Authentication
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
     }
 }
