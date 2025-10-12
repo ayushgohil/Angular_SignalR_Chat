@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-login',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class AppComponent {
-  title = 'Chat_APP';
+export class LoginComponent {
+
 }

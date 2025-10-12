@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-register',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class AppComponent {
-  title = 'Chat_APP';
+export class RegisterComponent {
+
 }
