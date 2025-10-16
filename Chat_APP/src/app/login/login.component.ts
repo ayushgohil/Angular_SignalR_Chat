@@ -8,7 +8,7 @@ import { AuthenticateResponse } from '../_Interfaces/authenticate-reponse';
   selector: 'app-login',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
   credentials: LoginModel = { username: '', password: '' };
