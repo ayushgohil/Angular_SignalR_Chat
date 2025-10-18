@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
     <div
         class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 w-full max-w-sm transform transition-all duration-700 animate-fade-slide-in">
-        <h2 class="text-3xl font-bold text-center text-white mb-8">Welcome Back 👋</h2>
+        <h2 class="text-3xl font-bold text-center text-white mb-8">Welcome Back</h2>
 
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
