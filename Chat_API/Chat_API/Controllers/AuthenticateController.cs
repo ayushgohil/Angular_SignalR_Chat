@@ -27,9 +27,7 @@ namespace Chat_API.Controllers
             _configuration = configuration;
         }
 
-
-        [HttpPost]
-        [Route("login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var user = await _userManager.FindByNameAsync(model.Username);
@@ -39,7 +37,6 @@ namespace Chat_API.Controllers
                 var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
-
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
                 foreach (var userRole in userRoles)
@@ -56,18 +53,18 @@ namespace Chat_API.Controllers
             return Unauthorized();
         }
 
-        [HttpPost]
-        [Route("register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var userExists = await _userManager.FindByNameAsync(model.Username);
+            var userExists = await _userManager.FindByNameAsync(model.Email);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
             ApplicationUser user = new()
-            {
+            {                
                 Email = model.Email,
+                UserName = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username
+                PhoneNumber = model.PhoneNo.ToString(),
             };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
@@ -79,14 +76,15 @@ namespace Chat_API.Controllers
         [Route("register-admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
         {
-            var userExists = await _userManager.FindByNameAsync(model.Username);
+            var userExists = await _userManager.FindByNameAsync(model.Email);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
             ApplicationUser user = new()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username
+                UserName = model.Email,
+                PhoneNumber = model.PhoneNo.ToString(),
             };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)

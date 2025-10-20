@@ -9,15 +9,15 @@ import { AuthenticateResponse } from '../_Interfaces/authenticate-reponse';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  private apiurl = 'https://localhost:7039/'
+  private apiurl = 'https://localhost:7039/api/'
   constructor(private http: HttpClient) { }
 
   Login(dto: LoginModel): Observable<AuthenticateResponse> {
-    return this.http.post<AuthenticateResponse>(`${this.apiurl}/Authenticate/login`, dto);
+    return this.http.post<AuthenticateResponse>(`${this.apiurl}Authenticate/login`, dto);
   }
 
   Register(dto: Register): Observable<AuthenticateResponse> {
-    return this.http.post<AuthenticateResponse>(`${this.apiurl}/Authenticate/register`, dto);
+    return this.http.post<AuthenticateResponse>(`${this.apiurl}Authenticate/register`, dto);
   }
 
   logout(): void {
@@ -36,9 +36,4 @@ export class AuthServiceService {
       return true;
     }
   }
-
-
-
-
-
 }
