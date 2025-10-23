@@ -22,6 +22,7 @@ export class LoginComponent {
     this.auth.Login(this.credentials).subscribe({
       next: (response) => {
         localStorage.setItem("jwt", response.token);
+        localStorage.setItem("username", response.userCredentials);
         this.invalidLogin = false;
         this.router.navigate(['/dashboard'])
       },

@@ -48,8 +48,10 @@ namespace Chat_API.Controllers
                     var token = GetToken(authClaims);
                     return Ok(new
                     {
+
                         token = new JwtSecurityTokenHandler().WriteToken(token),
-                        expiration = token.ValidTo
+                        expiration = token.ValidTo,
+                        userCredentials = user.FirstName + " " + user.LastName
                     });
                 }
                 return Unauthorized();
@@ -70,6 +72,8 @@ namespace Chat_API.Controllers
             {                
                 Email = model.Email,
                 UserName = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 PhoneNumber = model.PhoneNo.ToString(),
             };
