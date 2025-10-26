@@ -46,12 +46,19 @@ namespace Chat_API.Controllers
                         authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                     }
                     var token = GetToken(authClaims);
+                    var userCredentials = new
+                    {
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        PhoneNumber = user.PhoneNumber,
+                    };
                     return Ok(new
                     {
 
                         token = new JwtSecurityTokenHandler().WriteToken(token),
                         expiration = token.ValidTo,
-                        userCredentials = user.FirstName + " " + user.LastName
+                        userCredentials = userCredentials
                     });
                 }
                 return Unauthorized();

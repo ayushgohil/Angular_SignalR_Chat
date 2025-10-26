@@ -12,7 +12,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
+
+  ngOnInit(): void {
+    localStorage.clear();
+  }
   credentials: LoginModel = { Username: '', Password: '' };
   invalidLogin = false;
 
@@ -21,10 +26,11 @@ export class LoginComponent {
   login = (form: NgForm) => {
     this.auth.Login(this.credentials).subscribe({
       next: (response) => {
-        localStorage.setItem("jwt", response.token);
-        localStorage.setItem("username", response.userCredentials);
+        debugger;
+        this.auth.saveToken(response.token);
+        this.auth.saveCredentials(response.userCredentials);
         this.invalidLogin = false;
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/mainmodule'])
       },
       error: err => {
         this.invalidLogin = true;

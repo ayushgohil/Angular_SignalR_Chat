@@ -1,1 +1,149 @@
-<p>sidebar works!</p>
+<!-- Desktop Sidebar -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col lg:flex">
+    <!-- Logo/Brand -->
+    <div class="p-6 border-b border-slate-200">
+        <h1 class="text-xl font-semibold text-slate-900">Your App</h1>
+        <p class="text-sm text-slate-600 mt-1">Dashboard</p>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="flex-1 p-4 overflow-y-auto">
+        <ul class="space-y-2">
+            <li>
+                <a routerLink="/dashboard" routerLinkActive="bg-slate-900 text-white"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    class="flex items-center px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a routerLink="/chat" routerLinkActive="bg-slate-900 text-white"
+                    class="flex items-center px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                        </path>
+                    </svg>
+                    Chat
+                </a>
+            </li>
+            <li>
+                <a routerLink="/whiteboard" routerLinkActive="bg-slate-900 text-white"
+                    class="flex items-center px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+                        </path>
+                    </svg>
+                    Whiteboard
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- User Profile -->
+    <div class="p-4 border-t border-slate-200">
+        <div class="flex items-center px-4 py-3">
+            <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-medium">
+                JD
+            </div>
+            <div class="ml-3">
+                <p class="text-sm font-medium text-slate-900">John Doe</p>
+                <p class="text-xs text-slate-600">john&#64;company.com</p>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Mobile Sidebar Toggle Button -->
+<div class="lg:hidden fixed top-0 left-0 right-0 bg-white border-b border-slate-200 p-4 z-10">
+    <button (click)="toggleSidebar()" class="flex items-center text-slate-900">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <span class="ml-3 font-semibold">Menu</span>
+    </button>
+</div>
+
+<!-- Mobile Sidebar -->
+<aside [class.translate-x-0]="isSidebarOpen" [class.-translate-x-full]="!isSidebarOpen"
+    class="fixed inset-y-0 left-0 w-64 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-in-out z-20 lg:hidden">
+    <div class="flex flex-col h-full">
+        <!-- Logo/Brand -->
+        <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-semibold text-slate-900">Your App</h1>
+                <p class="text-sm text-slate-600 mt-1">Dashboard</p>
+            </div>
+            <button (click)="toggleSidebar()" class="text-slate-600 hover:text-slate-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 p-4 overflow-y-auto">
+            <ul class="space-y-2">
+                <li>
+                    <a routerLink="/dashboard" routerLinkActive="bg-slate-900 text-white"
+                        [routerLinkActiveOptions]="{exact: true}" (click)="toggleSidebar()"
+                        class="flex items-center px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                            </path>
+                        </svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/chat" routerLinkActive="bg-slate-900 text-white" (click)="toggleSidebar()"
+                        class="flex items-center px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                            </path>
+                        </svg>
+                        Chat
+                    </a>
+                </li>
+                <!-- <li>
+                    <a routerLink="/whiteboard" routerLinkActive="bg-slate-900 text-white" (click)="toggleSidebar()"
+                        class="flex items-center px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+                            </path>
+                        </svg>
+                        Whiteboard
+                    </a>
+                </li> -->
+            </ul>
+        </nav>
+
+        <!-- User Profile -->
+        <div class="p-4 border-t border-slate-200">
+            <div class="flex items-center px-4 py-3">
+                <div
+                    class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-medium">
+                    JD
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-slate-900">John Doe</p>
+                    <p class="text-xs text-slate-600">heythere</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Mobile Overlay -->
+<div *ngIf="isSidebarOpen" (click)="toggleSidebar()" class="fixed inset-0 bg-slate-900 bg-opacity-50 z-10 lg:hidden">
+</div>
