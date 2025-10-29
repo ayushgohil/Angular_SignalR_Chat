@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Route, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NonNullableFormBuilder } from '@angular/forms';
@@ -10,6 +10,12 @@ import { NonNullableFormBuilder } from '@angular/forms';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit {
+  @Output() menuSelected = new EventEmitter<string>();
+
+  selectMenu(menu: string) {
+    this.menuSelected.emit(menu);
+  }
+
   userCredential: object = localStorage.getItem("usercredentials") == null ? null : JSON.parse(localStorage.getItem("usercredentials") || "");
 
   ngOnInit(): void {
@@ -26,9 +32,8 @@ export class SidebarComponent implements OnInit {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-  // changeComponent() {
 
-  // }
+
 
 
 }

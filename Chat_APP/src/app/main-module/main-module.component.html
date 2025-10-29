@@ -1,5 +1,4 @@
 <div class="flex h-screen">
-
-    <app-sidebar></app-sidebar>
-    <app-menu-content></app-menu-content>
+    <app-sidebar (menuSelected)="onMenuSelected($event)"></app-sidebar>
+    <app-menu-content [selectedMenu]="selectedMenu"></app-menu-content>
 </div>

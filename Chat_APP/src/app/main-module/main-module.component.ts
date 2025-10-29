@@ -9,5 +9,9 @@ import { MenuContentComponent } from '../menu-content/menu-content.component';
   styleUrl: './main-module.component.css'
 })
 export class MainModuleComponent {
+  selectedMenu: any = '';
 
+  onMenuSelected(menu: any) {
+    this.selectedMenu = menu;
+  }
 }
