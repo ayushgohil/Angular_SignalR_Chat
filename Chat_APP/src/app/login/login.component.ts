@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         this.auth.saveToken(response.token);
         this.auth.saveCredentials(response.userCredentials);
         this.invalidLogin = false;
-        this.router.navigate(['/mainmodule'])
+        this.router.navigate(['/mainmodule']);
       },
       error: err => {
         this.invalidLogin = true;

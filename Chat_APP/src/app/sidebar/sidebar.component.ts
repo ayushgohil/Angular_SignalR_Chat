@@ -25,6 +25,8 @@ export class SidebarComponent implements OnInit {
       console.log("this didnt worked")
       this.router.navigate(['/login'])
     }
+    //first showing dashboard on load
+    this.menuSelected.emit("dashboard");
   }
   constructor(private router: Router) { }
   isSidebarOpen = false;

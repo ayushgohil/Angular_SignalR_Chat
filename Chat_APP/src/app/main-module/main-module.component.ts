@@ -12,6 +12,7 @@ export class MainModuleComponent {
   selectedMenu: any = '';
 
   onMenuSelected(menu: any) {
+    debugger;
     this.selectedMenu = menu;
   }
 }
