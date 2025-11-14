@@ -35,7 +35,7 @@ export class AuthServiceService {
     localStorage.setItem('usercredentials', JSON.stringify(credentials));
   }
   getCredentials() {
-    JSON.parse(localStorage.getItem('usercredentials') || "");
+    return JSON.parse(localStorage.getItem('usercredentials') || "");
   }
 
   getToken(): string | null {
