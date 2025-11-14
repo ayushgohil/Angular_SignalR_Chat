@@ -14,4 +14,5 @@ export const routes: Routes = [
     // { path: 'mainmodule', component: MainModuleComponent, canActivate: [authGuard] },
     { path: 'mainmodule', component: MainModuleComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
