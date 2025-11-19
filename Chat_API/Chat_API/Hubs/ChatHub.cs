@@ -4,6 +4,5 @@ namespace Chat_API.Hubs
 {
     public class ChatHub : Hub
     {
-
     }
 }

@@ -11,7 +11,7 @@ import { ChatComponent } from '../chat/chat.component';
 export class MenuContentComponent implements OnChanges {
   @Input() selectedMenu!: string;
   @ViewChild('container', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
-  constructor(private dialog: matdialog)
+
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedMenu']) {
@@ -34,19 +34,4 @@ export class MenuContentComponent implements OnChanges {
         break;
     }
   }
-
-  openAddGroupDialog() {
-    const dialogRef = this.dialog.open(AddGroupDialogComponent, {
-      width: '350px',
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Group name:', result);
-        // Save to database or SignalR etc.
-      }
-    });
-  }
-
 }
