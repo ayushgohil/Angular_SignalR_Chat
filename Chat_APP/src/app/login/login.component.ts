@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-
+  showPassword = false;
 
   ngOnInit(): void {
     localStorage.clear();
@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthServiceService, private router: Router) { }
 
   login = (form: NgForm) => {
+
+
     this.auth.Login(this.credentials).subscribe({
       next: (response) => {
         debugger;
