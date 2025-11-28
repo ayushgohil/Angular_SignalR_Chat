@@ -4,9 +4,12 @@ using Chat_API.Hubs;
 using Chat_API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Chat_API.Controllers
 {
@@ -16,17 +19,34 @@ namespace Chat_API.Controllers
     public class ChatController : ControllerBase
     {
         private readonly ApplicationDbContext _appDbContext;
-        private readonly IHubContext<ChatHub> _hubContext;
+        private readonly IHubContext<ChatHub> _context;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ChatController(ApplicationDbContext appDbContext,  IHubContext<ChatHub> hubContext, IMapper mapper)
+        public ChatController(ApplicationDbContext appDbContext,  IHubContext<ChatHub> hubContext, IMapper mapper, UserManager<ApplicationUser> userManager)
         {
             _appDbContext = appDbContext;
-            _hubContext = hubContext;
+            _context = hubContext;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         [HttpPost]
-        
+        public async Task<ActionResult<ChatMessage>> Create(ChatMessage chatMessage)
+        {
+            var user = _userManager.Users.FirstOrDefault(u => u.UserName == chatMessage.SenderName);
+            var msg = new ChatMessage()
+            {
+                Message = chatMessage.Message,
+                SenderID = chatMessage.SenderID,
+                SenderName = chatMessage.SenderName,
+                ReceiverID = chatMessage.ReceiverID,
+                ReceiverName = chatMessage.ReceiverName,
+                isGroup = chatMessage.isGroup,
+                EntDt = chatMessage.EntDt
+            };
+            return CreatedAtAction(nameof(Get), new { id = msg.Id }, createdMessage);
+
+        }
     }
 }
