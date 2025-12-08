@@ -14,6 +14,10 @@ export class AuthServiceService {
   private apiurl = 'https://localhost:7039/api/'
   constructor(private http: HttpClient, private router: Router) { }
 
+  GetAPIUrl() {
+    return this.apiurl;
+  }
+
   Login(dto: LoginModel): Observable<AuthenticateResponse> {
     return this.http.post<AuthenticateResponse>(`${this.apiurl}Authenticate/login`, dto);
   }

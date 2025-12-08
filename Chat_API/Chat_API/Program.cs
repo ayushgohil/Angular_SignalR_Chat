@@ -67,6 +67,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("EnableCORS");
 
 app.UseRouting();
 app.UseEndpoints(endpoints =>
@@ -75,9 +76,8 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 });
 
-app.UseCors("EnableCORS");
-
 app.UseHttpsRedirection();
+
 
 app.UseAuthentication();
 app.UseAuthorization();
