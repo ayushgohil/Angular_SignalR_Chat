@@ -21,7 +21,6 @@ export class MenuContentComponent implements OnChanges {
 
   loadSelectedComponent() {
     this.container.clear();
-    debugger;
     switch (this.selectedMenu) {
       case 'dashboard':
         this.container.createComponent(DashboardComponent);

@@ -70,17 +70,17 @@ if (app.Environment.IsDevelopment())
 app.UseCors("EnableCORS");
 
 app.UseRouting();
+app.UseHttpsRedirection();
+
+
+
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<ChatHub>("/ChatHub");
     endpoints.MapControllers();
 });
-
-app.UseHttpsRedirection();
-
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.MapControllers();
 

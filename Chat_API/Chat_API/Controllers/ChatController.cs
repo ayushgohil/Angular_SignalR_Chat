@@ -42,32 +42,20 @@ namespace Chat_API.Controllers
                 EntDt = chatMessage.EntDt
             };
             return msg;
-
         }
         [HttpGet("users")]
         public async Task<ActionResult<List<ChatUsersDTO>>> GetAllChatUsers()
         {
-            // 1. Get the users from Identity (you MUST await here)
             var dbUsers = await _userManager.Users.ToListAsync();
-
-            // 2. Now you can apply Select because dbUsers is a List<ApplicationUser>
             var users = dbUsers.Select(u => new ChatUsersDTO
             {
                 Id = u.Id,
                 FullName = $"{u.FirstName} {u.LastName}",
                 Email = u.Email,
-                AvatarURL = GetDefaultAvatar(u.FirstName, u.LastName)
+                AvatarURL = ""
             }).ToList();
 
-            // 3. Return DTO list
             return Ok(users);
         }
-
-        private string GetDefaultAvatar(string first, string last)
-        {
-            var initials = $"{first?.FirstOrDefault()}{last?.FirstOrDefault()}".ToUpper();
-            return $"https://ui-avatars.com/api/?name={initials}&background=random";
-        }
-
     }
 }

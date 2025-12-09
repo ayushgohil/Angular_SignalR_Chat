@@ -46,7 +46,7 @@ export class ChatComponent implements OnInit {
       'Authorization': `Bearer ${token}`
     };
 
-    this.http.get<ChatUser[]>("https://localhost:7039/api/Chat/Users", { headers }).subscribe({
+    this.http.get<ChatUser[]>("https://localhost:7039/api/Chat/users", { headers }).subscribe({
       next: (res) => {
         this.users = res;
         this.filteredUsers = [...res];
@@ -69,7 +69,7 @@ export class ChatComponent implements OnInit {
   selectUser(user: ChatUser) {
     this.selectedUser = user;
 
-    // Dummy messages until you hook SignalR
+    // Dummy messages 
     this.messages = [
       { text: `Hey, I'm ${user.fullName}!`, fromMe: false, timestamp: new Date() },
       { text: 'This is a sample chat message.', fromMe: false, timestamp: new Date() },

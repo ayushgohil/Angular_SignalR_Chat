@@ -24,9 +24,7 @@ export class SidebarComponent implements OnInit {
   userCredential: any = localStorage.getItem("usercredentials") == null ? null : JSON.parse(localStorage.getItem("usercredentials") || "");
 
   ngOnInit(): void {
-    debugger;
     if (this.userCredential == null) {
-      debugger;
       console.log("this didnt worked")
       this.router.navigate(['/login'])
     }
