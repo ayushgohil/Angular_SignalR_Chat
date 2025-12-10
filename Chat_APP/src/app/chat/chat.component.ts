@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../Services/user.service';
+import { LottieComponent, AnimationOptions, provideLottieOptions } from 'ngx-lottie';
+import player from 'lottie-web';
 
 interface ChatUser {
   id: string;
@@ -79,7 +81,9 @@ export class ChatComponent implements OnInit {
 
   // Send message
   sendMessage() {
+
     if (!this.newMessage.trim() || !this.selectedUser) return;
+
 
     this.messages.push({
       text: this.newMessage.trim(),

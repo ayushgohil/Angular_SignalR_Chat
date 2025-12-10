@@ -5,6 +5,7 @@ import { AuthServiceService } from '../Services/auth-service.service';
 import { AuthenticateResponse } from '../_Interfaces/authenticate-reponse';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoaderService } from '../shared/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.clear();
+    this.loader.show();
   }
   credentials: LoginModel = { Username: '', Password: '' };
   invalidLogin = false;
 
-  constructor(private auth: AuthServiceService, private router: Router) { }
+  constructor(private auth: AuthServiceService, private router: Router, private loader: LoaderService) { }
 
   login = (form: NgForm) => {
 
