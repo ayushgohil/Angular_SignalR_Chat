@@ -5,7 +5,7 @@ import { AuthServiceService } from '../Services/auth-service.service';
 import { AuthenticateResponse } from '../_Interfaces/authenticate-reponse';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoaderService } from '../shared/loader.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login',
@@ -18,16 +18,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.clear();
-    this.loader.show();
+    this.ngxService.stop();
   }
   credentials: LoginModel = { Username: '', Password: '' };
   invalidLogin = false;
 
-  constructor(private auth: AuthServiceService, private router: Router, private loader: LoaderService) { }
+  constructor(private auth: AuthServiceService, private router: Router, private ngxService: NgxUiLoaderService) { }
 
   login = (form: NgForm) => {
-
-
+    this.ngxService.start();
     this.auth.Login(this.credentials).subscribe({
       next: (response) => {
         debugger;

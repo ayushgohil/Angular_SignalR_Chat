@@ -25,7 +25,9 @@
     "@tailwindcss/postcss": "^4.1.14",
     "lottie-web": "^5.13.0",
     "ngx-lottie": "^13.0.1",
+    "ngx-spinner": "^19.0.0",
     "ngx-toastr": "^19.1.0",
+    "ngx-ui-loader": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from '../Services/user.service';
 import { LottieComponent, AnimationOptions, provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 interface ChatUser {
   id: string;
@@ -35,9 +36,10 @@ export class ChatComponent implements OnInit {
 
   messages: ChatMessage[] = [];
   newMessage: string = '';
-  constructor(private http: HttpClient, private userauth: UserService, private auth: AuthServiceService) { }
+  constructor(private http: HttpClient, private userauth: UserService, private auth: AuthServiceService, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.loadUsers();
   }
 
@@ -50,6 +52,7 @@ export class ChatComponent implements OnInit {
 
     this.http.get<ChatUser[]>("https://localhost:7039/api/Chat/users", { headers }).subscribe({
       next: (res) => {
+        this.ngxService.stop();
         this.users = res;
         this.filteredUsers = [...res];
       },
