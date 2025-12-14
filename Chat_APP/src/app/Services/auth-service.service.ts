@@ -26,6 +26,10 @@ export class AuthServiceService {
     return this.http.post<AuthenticateResponse>(`${this.apiurl}Authenticate/register`, dto);
   }
 
+  RefreshToken() {
+    return this.http.get<AuthenticateResponse>(`${this.apiurl}Authenticate/register`);
+  }
+
   logout(): void {
     localStorage.removeItem('jwt');
     console.log("there is some problem");

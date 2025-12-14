@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   showPassword = false;
 
   ngOnInit(): void {
+
     localStorage.clear();
     this.ngxService.stop();
   }
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/mainmodule']);
       },
       error: err => {
+        this.ngxService.stop();
         this.invalidLogin = true;
       }
     })
