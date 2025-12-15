@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserService } from '../Services/user.service';
 import { LottieComponent, AnimationOptions, provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
@@ -49,8 +49,9 @@ export class ChatComponent implements OnInit {
     const headers = {
       'Authorization': `Bearer ${token}`
     };
+    const params = new HttpParams().set("CurrentUserID", this.auth.getUserID() || "")
 
-    this.http.get<ChatUser[]>("https://localhost:7039/api/Chat/users", { headers }).subscribe({
+    this.http.get<ChatUser[]>("https://localhost:7039/api/Chat/users", { headers, params }).subscribe({
       next: (res) => {
         this.ngxService.stop();
         this.users = res;

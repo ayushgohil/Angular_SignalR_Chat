@@ -3,6 +3,7 @@ import { Route, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angu
 import { CommonModule } from '@angular/common';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ import { AuthServiceService } from '../Services/auth-service.service';
 })
 export class SidebarComponent implements OnInit {
   @Output() menuSelected = new EventEmitter<string>();
-  constructor(private router: Router, private serice: AuthServiceService) { }
+  constructor(private router: Router, private serice: AuthServiceService, private ngxService: NgxUiLoaderService) { }
   ShortUserName: string = "";
   UserName: string = "";
   Email: string = "";
@@ -46,10 +47,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logOut() {
+    this.ngxService.start();
     this.serice.logout();
   }
-
-
-
-
 }

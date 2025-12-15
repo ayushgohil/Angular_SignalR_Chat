@@ -44,9 +44,9 @@ namespace Chat_API.Controllers
             return msg;
         }
         [HttpGet("users")]
-        public async Task<ActionResult<List<ChatUsersDTO>>> GetAllChatUsers()
+        public async Task<ActionResult<List<ChatUsersDTO>>> GetAllChatUsers(string currentUserID)
         {
-            var dbUsers = await _userManager.Users.ToListAsync();
+            var dbUsers = await _userManager.Users.Where(u => u.Id != currentUserID.ToString()).ToListAsync();
             var users = dbUsers.Select(u => new ChatUsersDTO
             {
                 Id = u.Id,

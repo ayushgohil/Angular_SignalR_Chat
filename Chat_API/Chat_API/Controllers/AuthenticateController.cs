@@ -48,6 +48,7 @@ namespace Chat_API.Controllers
                     var token = GetToken(authClaims);
                     var userCredentials = new
                     {
+                        Id = user.Id,
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         Email = user.Email,

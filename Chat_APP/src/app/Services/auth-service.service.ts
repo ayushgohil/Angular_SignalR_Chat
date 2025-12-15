@@ -49,6 +49,11 @@ export class AuthServiceService {
   getToken(): string | null {
     return localStorage.getItem('jwt');
   }
+
+  getUserID(): string | null {
+    return JSON.parse(localStorage.getItem("usercredentials") || "").id;
+  }
+
   isLoggedIn(): boolean {
     debugger;
     const token = this.getToken();
