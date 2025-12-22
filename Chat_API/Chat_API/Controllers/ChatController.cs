@@ -54,7 +54,6 @@ namespace Chat_API.Controllers
                 Email = u.Email,
                 AvatarURL = ""
             }).ToList();
-
             return Ok(users);
         }
     }

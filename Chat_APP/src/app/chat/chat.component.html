@@ -46,7 +46,7 @@
         </div>
 
         <!-- Messages Area -->
-        <div class="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
+        <div class="flex-1 p-4 overflow-y-auto space-y-2 bg-slate-50">
             <div *ngFor="let msg of messages" class="flex" [ngClass]="msg.fromMe ? 'justify-end' : 'justify-start'">
                 <div class="max-w-xs px-4 py-2 rounded-lg"
                     [ngClass]="msg.fromMe ? 'bg-slate-800 text-white' : 'bg-slate-200 text-slate-900'">
