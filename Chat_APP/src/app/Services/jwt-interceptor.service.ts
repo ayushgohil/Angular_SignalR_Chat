@@ -6,9 +6,7 @@ import { catchError, throwError } from 'rxjs';
 @Injectable()
 
 export class JwtInterceptorService implements HttpInterceptor {
-
   constructor(private auth: AuthServiceService) { }
-
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const token = this.auth.getToken();
     if (token) {
@@ -27,4 +25,3 @@ export class JwtInterceptorService implements HttpInterceptor {
     );
   }
 }
-
