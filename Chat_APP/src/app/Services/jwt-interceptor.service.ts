@@ -3,7 +3,6 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@a
 import { AuthServiceService } from './auth-service.service';
 import { catchError, throwError } from 'rxjs';
 @Injectable()
-
 export class JwtInterceptorService implements HttpInterceptor {
   constructor(private auth: AuthServiceService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler) {
